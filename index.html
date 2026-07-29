@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA - Math Reboot 17 | Indices, Surds and Exponents</title>
+<title>QA - Math Reboot 17 | Exponents, Surds and Power Laws</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -17,8 +17,8 @@ html,body{height:100%;font-family:'IBM Plex Sans',sans-serif;background:var(--li
 .timer-wrap{display:flex;align-items:center;gap:8px}
 .timer-label{font-size:10px;color:#99b;letter-spacing:1px;text-transform:uppercase}
 .timer{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:#fff;background:var(--navy2);border:1.5px solid #4466aa;padding:3px 14px;border-radius:6px;min-width:90px;text-align:center;letter-spacing:2px}
-.timer.warn{color:var(--gold);border-color:var(--gold);animation:pulse 1s ease-in-out infinite}
-.timer.danger{color:#ff6b6b;border-color:#ff6b6b;animation:pulse .5s ease-in-out infinite}
+.timer.warn{color:var(--gold);border-color:var(--gold);animation:pulse 1s infinite}
+.timer.danger{color:#ff6b6b;border-color:#ff6b6b;animation:pulse .5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
 .h-student{font-size:11px;color:#ccddff;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .section-tabs{position:fixed;top:52px;left:0;right:0;z-index:190;background:var(--navy2);display:flex;align-items:center;padding:5px 16px;gap:2px;border-bottom:1px solid #2a4a9a;overflow-x:auto}
@@ -28,27 +28,29 @@ html,body{height:100%;font-family:'IBM Plex Sans',sans-serif;background:var(--li
 .main{display:flex;height:100vh;padding-top:90px;padding-bottom:56px}
 .q-panel{flex:1;overflow-y:auto;background:white;border-right:1px solid var(--border)}
 .q-inner{padding:22px 28px;max-width:820px}
+.eq-box{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:var(--navy);background:#f0f4ff;border:1.5px solid #c8d8f8;border-radius:7px;padding:10px 18px;margin-bottom:14px;line-height:1.8}
 .q-meta{display:flex;align-items:center;gap:7px;margin-bottom:10px;flex-wrap:wrap}
 .q-num{font-size:15px;font-weight:700;color:var(--navy)}
 .badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:600}
-.b-s1{background:#e0eaff;color:var(--navy3)}.b-s2{background:#e6f7f4;color:var(--teal)}.b-s3{background:#f3e8ff;color:var(--purple)}
+.b-s1{background:#e0eaff;color:var(--navy3)}.b-s2{background:#e6f7f4;color:var(--teal)}.b-s3{background:#fdf0e0;color:var(--orange)}
 .b-tita{background:#e8f5ee;color:var(--green)}.b-mcq{background:#fce4ec;color:#b91c6a}
-.q-text{font-size:14.5px;line-height:2;margin-bottom:12px;font-weight:500;color:var(--text)}
-.math{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:var(--navy);background:#f0f4ff;border:1.5px solid #c8d8f8;border-radius:7px;padding:10px 20px;margin-bottom:14px;text-align:center;line-height:2}
-.instr{background:#fffbe6;border:1px solid #f0d060;border-radius:5px;padding:7px 12px;font-size:11.5px;color:#7a5c00;margin-bottom:12px;line-height:1.5}
+.q-text{font-size:14.5px;line-height:1.9;margin-bottom:12px;font-weight:500;color:var(--text)}
+.q-text sup{font-size:10px}
+.instr{background:#fffbe6;border:1px solid #f0d060;border-radius:5px;padding:7px 12px;font-size:11.5px;color:#7a5c00;margin-bottom:12px}
 .options{list-style:none;display:flex;flex-direction:column;gap:8px}
-.option{display:flex;align-items:center;gap:10px;padding:11px 16px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;transition:border-color .15s,background .15s;font-size:14px;user-select:none}
+.option{display:flex;align-items:center;gap:10px;padding:11px 16px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;transition:border-color .15s,background .15s;font-size:13.5px;user-select:none}
 .option:hover{border-color:var(--navy3);background:#f0f4ff}
 .option.selected{border-color:var(--navy3);background:#e8eeff}
 .opt-circle{width:18px;height:18px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .option.selected .opt-circle{border-color:var(--navy3)}
 .opt-dot{width:9px;height:9px;border-radius:50%;background:var(--navy3);display:none}
 .option.selected .opt-dot{display:block}
-.opt-lbl{font-weight:700;color:var(--navy3);min-width:22px;font-size:13px}
-.opt-val{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:var(--navy)}
+.opt-lbl{font-weight:700;color:var(--navy3);min-width:24px;font-size:13px}
+.opt-val{font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:600;color:var(--navy)}
+.opt-val sup{font-size:9px}
 .tita-wrap{margin-top:8px}
 .tita-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--subtext);margin-bottom:8px}
-.tita-input{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:700;letter-spacing:3px;text-align:center;border:2.5px solid var(--navy3);border-radius:8px;padding:12px 20px;width:280px;color:var(--navy);background:#f8f9ff;display:block;transition:border-color .15s,box-shadow .15s}
+.tita-input{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:700;letter-spacing:4px;text-align:center;border:2.5px solid var(--navy3);border-radius:8px;padding:12px 20px;width:260px;color:var(--navy);background:#f8f9ff;display:block;transition:border-color .15s,box-shadow .15s}
 .tita-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,160,32,.2)}
 .tita-hint{font-size:11px;color:var(--subtext);margin-top:6px}
 .r-panel{width:222px;background:#f8f9fc;border-left:1px solid var(--border);overflow-y:auto;padding:12px;flex-shrink:0}
@@ -65,7 +67,7 @@ html,body{height:100%;font-family:'IBM Plex Sans',sans-serif;background:var(--li
 .sj-btn:hover,.sj-btn.active{background:var(--navy3);color:white;border-color:var(--navy3)}
 .pal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
 .pb{width:30px;height:30px;border:none;border-radius:3px;font-size:9px;font-weight:700;cursor:pointer;color:white;transition:transform .1s}
-.pb:hover{transform:scale(1.1)}.pb.cur{box-shadow:0 0 0 2px var(--gold)}
+.pb:hover{transform:scale(1.12)}.pb.cur{box-shadow:0 0 0 2px var(--gold)}
 .pb.p-nv{background:#9ca3af}.pb.p-na{background:#ef4444}.pb.p-ans{background:#16a34a}.pb.p-mrv{background:var(--purple)}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:#eef0f5;border-top:1px solid var(--border);padding:9px 16px;display:flex;justify-content:space-between;align-items:center}
 .nav-left,.nav-right{display:flex;gap:8px}
@@ -132,10 +134,11 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
 </style>
 </head>
 <body>
+
 <div class="entry-ov" id="entry-ov">
   <div class="entry-card">
     <div class="entry-logo">QA <span>Math Reboot 17</span></div>
-    <div class="entry-title">Indices, Surds &amp; Exponents</div>
+    <div class="entry-title">Exponents, Surds &amp; Power Laws</div>
     <div class="entry-sub">MCQ (+3/&minus;1) &amp; TITA (+3/0) &middot; 26 Questions<br>The 60-minute timer starts after you click <strong>Begin Test</strong>.</div>
     <div class="entry-divider"></div>
     <div class="entry-field"><label class="entry-label">Student Name *</label><input class="entry-input" id="inp-name" type="text" placeholder="Your full name" autocomplete="off"/></div>
@@ -152,20 +155,23 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
   </div>
 </div>
 <div class="toast" id="toast"></div>
+
 <div class="header">
   <div class="logo">QA <span>Math Reboot 17</span></div>
-  <div class="hc"><div class="sec-badge">Indices, Surds &amp; Exponents</div><div class="h-info">26 Qs &nbsp;&middot;&nbsp; 60 Min &nbsp;&middot;&nbsp; MCQ &minus;1 &middot; TITA no negative</div></div>
+  <div class="hc"><div class="sec-badge">Exponents &amp; Surds</div><div class="h-info">26 Qs &nbsp;&middot;&nbsp; 60 Min &nbsp;&middot;&nbsp; MCQ &minus;1 &middot; TITA no negative</div></div>
   <div style="display:flex;align-items:center;gap:14px">
     <div class="h-student" id="h-student"></div>
     <div class="timer-wrap"><div class="timer-label">Time Left</div><div class="timer" id="timer">60:00</div></div>
   </div>
 </div>
+
 <div class="section-tabs">
-  <div class="tab active" id="tab1">&#167;1 &middot; Surds &amp; Roots (Q1&ndash;9)</div>
-  <div class="tab" id="tab2">&#167;2 &middot; Indices &amp; Powers (Q10&ndash;17)</div>
-  <div class="tab" id="tab3">&#167;3 &middot; Exponential Equations (Q18&ndash;26)</div>
+  <div class="tab active" id="tab1">&#167;1 &middot; Exponents &amp; Surds (Q1&ndash;9)</div>
+  <div class="tab" id="tab2">&#167;2 &middot; Power Laws &amp; Comparison (Q10&ndash;17)</div>
+  <div class="tab" id="tab3">&#167;3 &middot; Equal Powers &amp; Index Laws (Q18&ndash;26)</div>
   <div class="q-ctr">Q&nbsp;<span id="cur-q">1</span>&nbsp;/&nbsp;26</div>
 </div>
+
 <div class="main">
   <div class="q-panel"><div class="q-inner" id="q-inner"></div></div>
   <div class="r-panel">
@@ -175,7 +181,7 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
       <div class="si-row r"><span>Wrong (MCQ)</span><span class="v">&minus;1</span></div>
       <div class="si-row"><span>Wrong (TITA)</span><span class="v" style="color:#888">0</span></div>
       <div class="si-row"><span style="color:#888">Skipped</span><span class="v" style="color:#888">0</span></div>
-      <div class="tita-note">12 MCQ: &minus;1 penalty.<br>14 TITA: no negative.<br>Q14 &amp; Q15 have 5 options.</div>
+      <div class="tita-note">12 MCQ: &minus;1 penalty.<br>14 TITA: no negative.</div>
     </div>
     <div class="legend">
       <div class="r-title">Status</div>
@@ -194,6 +200,7 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
     <div class="pal-grid" id="palette"></div>
   </div>
 </div>
+
 <div class="bottom-nav">
   <div class="nav-left">
     <button class="btn btn-prev" onclick="navigate(-1)">&#9664; Prev</button>
@@ -205,10 +212,11 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
     <button class="btn btn-submit" onclick="showConfirm()">Submit Test</button>
   </div>
 </div>
+
 <div class="overlay" id="confirm-ov">
   <div class="confirm-box">
     <h3>Submit Test?</h3>
-    <p>Math Reboot 17 &middot; Indices, Surds &amp; Exponents &middot; 26 Questions</p>
+    <p>Math Reboot 17 &middot; Exponents, Surds &amp; Power Laws &middot; 26 Questions</p>
     <div class="c-stats" id="c-stats"></div>
     <div class="c-btns">
       <button class="btn btn-cancel" onclick="closeConfirm()">Cancel</button>
@@ -235,7 +243,7 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
 <div class="overlay" id="results-ov">
   <div class="modal">
     <div class="modal-title">&#128202; Math Reboot 17 &mdash; Results</div>
-    <div class="modal-sub">Indices, Surds &amp; Exponents &middot; MCQ: +3/&minus;1 &middot; TITA: +3/0</div>
+    <div class="modal-sub">Exponents, Surds &amp; Power Laws &middot; MCQ: +3/&minus;1 &middot; TITA: +3/0</div>
     <div class="s-strip" id="s-strip"></div>
     <div class="score-grid" id="score-cards"></div>
     <div class="sep"></div>
@@ -256,6 +264,7 @@ select.entry-input{cursor:pointer;appearance:none;background-image:url("data:ima
     </div>
   </div>
 </div>
+
 <script>
 const GF={
   url:'https://docs.google.com/forms/d/e/1FAIpQLScclb9X9BfdsWoPMPurqbdy4p0DXzIFxfAqbz6hC_HCt7umGA/formResponse',
@@ -266,70 +275,69 @@ const GF={
 const L=['A','B','C','D','E'];
 
 const Q=[
-// S1: SURDS & ROOTS (Q1-Q9)
+// S1: EXPONENTS & SURDS (Q1-Q9)
 {id:1,sec:1,mcq:false,
- math:'M = 6561&sup2; &divide; 729&sup2;',
+ eq:'M = 6561&sup2; &divide; 729&sup2;',
  text:'Find the value of <strong>M</strong>.',
  answer:'81',tol:0},
 
 {id:2,sec:1,mcq:false,
- math:'2<sup>x</sup> = 4<sup>y</sup> = 16<sup>z</sup>',
- text:'x, y and z are the <strong>largest possible two-digit natural numbers</strong> satisfying the above. Find <strong>x &minus; y &minus; z</strong>.',
+ eq:'2<sup>x</sup> = 4<sup>y</sup> = 16<sup>z</sup>',
+ text:'x, y and z are the <strong>largest possible two-digit natural numbers</strong> satisfying the equation. Find the value of <strong>x &minus; y &minus; z</strong>.',
  answer:'24',tol:0},
 
 {id:3,sec:1,mcq:false,
- math:'(2<sup>x+1</sup> + 2<sup>x+2</sup> + 2<sup>x+3</sup>) &divide; (2<sup>x</sup> + 2<sup>x+1</sup> + 2<sup>x+2</sup>)',
- text:'Simplify the above expression.',
+ eq:'(2<sup>x+1</sup> + 2<sup>x+2</sup> + 2<sup>x+3</sup>) &divide; (2<sup>x</sup> + 2<sup>x+1</sup> + 2<sup>x+2</sup>)',
+ text:'Simplify the expression.',
  answer:'2',tol:0},
 
 {id:4,sec:1,mcq:true,
- math:'&radic;(24 + &radic;432)',
- text:'What is the value of the above?',
+ text:'What is the <strong>square root</strong> of <strong>24 + &radic;432</strong>?',
  options:['&radic;17 + &radic;7','&radic;18 + &radic;6','&radic;19 + &radic;5','&radic;20 + &radic;4'],answer:1},
 
 {id:5,sec:1,mcq:false,
- math:'&radic;(24 + &radic;320) = P&radic;Q + R &nbsp;&nbsp; (P, Q, R &gt; 1)',
+ eq:'&radic;(24 + &radic;320) = P&radic;Q + R &nbsp;&nbsp;(P, Q, R &gt; 1)',
  text:'Find the value of <strong>P + Q + R</strong>.',
  answer:'9',tol:0},
 
 {id:6,sec:1,mcq:false,
- math:'2<sup>x&minus;7</sup> + 3<sup>y+8</sup> = 209',
- text:'x and y are integers. Find <strong>x + y</strong>.',
+ eq:'2<sup>x&minus;7</sup> + 3<sup>y+8</sup> = 209 &nbsp;&nbsp;(x, y are integers)',
+ text:'Find the value of <strong>x + y</strong>.',
  answer:'10',tol:0},
 
 {id:7,sec:1,mcq:false,
- math:'&radic;(13 + &radic;168) = &radic;P + &radic;Q',
+ eq:'&radic;(13 + &radic;168) = &radic;P + &radic;Q',
  text:'Find the value of <strong>P + Q</strong>.',
  answer:'13',tol:0},
 
 {id:8,sec:1,mcq:false,
- math:'N = (13 + 2&radic;11)<sup>1/3</sup> + (13 &minus; 2&radic;11)<sup>1/3</sup>',
+ eq:'N = (13 + 2&radic;11)<sup>1/3</sup> + (13 &minus; 2&radic;11)<sup>1/3</sup>',
  text:'Find the value of <strong>N&sup3; &minus; 15N</strong>.',
  answer:'26',tol:0},
 
 {id:9,sec:1,mcq:false,
- math:'N = (4.7&sup3; &minus; 2.7&sup3;) &divide; (22.09 + 12.69 + 7.29)',
- text:'Find the value of <strong>N</strong>. &nbsp;<em style="font-size:12px;color:var(--subtext)">(Hint: 4.7&sup2;=22.09, 4.7&times;2.7=12.69, 2.7&sup2;=7.29)</em>',
+ eq:'N = (4.7&sup3; &minus; 2.7&sup3;) &divide; (22.09 + 12.69 + 7.29)',
+ text:'Find the value of <strong>N</strong>.',
  answer:'2',tol:0},
 
-// S2: INDICES & POWERS (Q10-Q17)
+// S2: POWER LAWS & COMPARISON (Q10-Q17)
 {id:10,sec:2,mcq:true,
- math:'M = 3<sup>x+1</sup> + 3<sup>x+2</sup> + 3<sup>x+3</sup> &nbsp;&nbsp; (x is a natural number)',
+ eq:'M = 3<sup>x+1</sup> + 3<sup>x+2</sup> + 3<sup>x+3</sup> &nbsp;&nbsp;(x is a natural number)',
  text:'M is <strong>always divisible</strong> by which of the following?',
  options:['115','117','120','125'],answer:1},
 
 {id:11,sec:2,mcq:false,
- math:'2<sup>2x+1</sup> + 4<sup>x+2</sup> = 4444 + 222 &minus; 55 &minus; 3',
+ eq:'2<sup>2x+1</sup> + 4<sup>x+2</sup> = 4444 + 222 &minus; 55 &minus; 3',
  text:'Find the value of <strong>x</strong>.',
  answer:'4',tol:0},
 
 {id:12,sec:2,mcq:true,
- math:'(0.1111&hellip;)<sup>a</sup> = 324<sup>b</sup> = 2<sup>c</sup>',
- text:'Find the value of <strong>b/c &minus; b/a</strong>.',
+ eq:'(0.111...)<sup>a</sup> = 324<sup>b</sup> = 2<sup>c</sup>',
+ text:'What is the value of <strong>b/c &minus; b/a</strong>?',
  options:['1/2','1','1/4','1/3'],answer:0},
 
 {id:13,sec:2,mcq:false,
- math:'a = (by + cz)/x &nbsp;&nbsp; b = (ax + cz)/y &nbsp;&nbsp; c = (ax + by)/z',
+ eq:'a = (by + cz)/x &nbsp;&nbsp; b = (ax + cz)/y &nbsp;&nbsp; c = (ax + by)/z',
  text:'Find the value of <strong>ax + by + cz</strong>.',
  answer:'0',tol:0},
 
@@ -342,56 +350,56 @@ const Q=[
  options:['&radic;79 &minus; &radic;51','&radic;81 &minus; &radic;53','&radic;98 &minus; &radic;70','&radic;47 &minus; &radic;19','&radic;73 &minus; &radic;45'],answer:3},
 
 {id:16,sec:2,mcq:true,
- text:'Which of the following is the <strong>largest</strong>? (Compare the power towers carefully.)',
- options:['2<sup>2<sup>22</sup></sup>','2<sup>22<sup>2</sup></sup>','22<sup>2<sup>2</sup></sup>'],answer:0},
+ text:'Which of the following is the <strong>largest</strong>?',
+ options:['2<sup>(2<sup>22</sup>)</sup>','2<sup>(22<sup>2</sup>)</sup>','22<sup>(2<sup>2</sup>)</sup>'],answer:0},
 
 {id:17,sec:2,mcq:true,
- text:'Which of the following is the <strong>largest</strong>? (Evaluate the tower from top to bottom.)',
- options:['2<sup>2<sup>3<sup>3</sup></sup></sup>','2<sup>3<sup>2<sup>3</sup></sup></sup>','3<sup>(2<sup>3</sup>)<sup>2</sup></sup>','3<sup>3<sup>2<sup>2</sup></sup></sup>'],answer:0},
+ text:'Which of the following is the <strong>largest</strong>?',
+ options:['2<sup>(2<sup>(3<sup>3</sup>)</sup>)</sup>','2<sup>(3<sup>(2<sup>3</sup>)</sup>)</sup>','3<sup>((2<sup>3</sup>)<sup>2</sup>)</sup>','3<sup>(3<sup>(2<sup>2</sup>)</sup>)</sup>'],answer:0},
 
-// S3: EXPONENTIAL EQUATIONS (Q18-Q26)
+// S3: EQUAL POWERS & INDEX LAWS (Q18-Q26)
 {id:18,sec:3,mcq:false,
- math:'2<sup>x</sup> = 3<sup>y</sup> = 6<sup>&minus;z</sup>',
+ eq:'2<sup>x</sup> = 3<sup>y</sup> = 6<sup>&minus;z</sup>',
  text:'Find the value of <strong>1/x + 1/y + 1/z</strong>.',
  answer:'0',tol:0},
 
 {id:19,sec:3,mcq:true,
- math:'2<sup>x</sup> = 3<sup>y</sup> = 12<sup>z</sup>',
- text:'Express <strong>z</strong> in terms of x and y.',
+ eq:'2<sup>x</sup> = 3<sup>y</sup> = 12<sup>z</sup>',
+ text:'Find <strong>z</strong> in terms of x and y.',
  options:['z = xy / (x + y)','z = xy / (x + 2y)','z = xy / (2x + y)','z = 2xy / (x + 2y)'],answer:1},
 
 {id:20,sec:3,mcq:true,
- math:'a<sup>x</sup> = b<sup>y</sup> = c<sup>z</sup> &nbsp;&nbsp; and &nbsp;&nbsp; b<sup>4</sup> = a<sup>3</sup>c',
- text:'Express <strong>z</strong> in terms of x and y.',
+ eq:'a<sup>x</sup> = b<sup>y</sup> = c<sup>z</sup> &nbsp;&nbsp; and &nbsp;&nbsp; b<sup>4</sup> = a<sup>3</sup>c',
+ text:'Find <strong>z</strong> in terms of x and y.',
  options:['z = xy / (3x + 4y)','z = xy / (3x &minus; 4y)','z = xy / (4x + 3y)','z = xy / (4x &minus; 3y)'],answer:3},
 
 {id:21,sec:3,mcq:true,
- math:'2<sup>x</sup> = 4<sup>y</sup> = 8<sup>z</sup> &nbsp;&nbsp; and &nbsp;&nbsp; (1/2)x + (1/4)y + (1/6)z = 247/144',
+ eq:'2<sup>x</sup> = 4<sup>y</sup> = 8<sup>z</sup> &nbsp;&nbsp; and &nbsp;&nbsp; 1/(2x) + 1/(4y) + 1/(6z) = 24/7',
  text:'Find the value of <strong>z</strong>.',
  options:['7/24','7/16','7/48','7/96'],answer:2},
 
 {id:22,sec:3,mcq:false,
- math:'a = b<sup>x</sup> &nbsp;&nbsp; b = c<sup>y</sup> &nbsp;&nbsp; c = a<sup>z</sup>',
+ eq:'a = b<sup>x</sup> &nbsp;&nbsp; b = c<sup>y</sup> &nbsp;&nbsp; c = a<sup>z</sup>',
  text:'Find the value of <strong>x &middot; y &middot; z</strong>.',
  answer:'1',tol:0},
 
 {id:23,sec:3,mcq:true,
- math:'4 = 5<sup>a</sup> &nbsp;&nbsp; 5 = 6<sup>b</sup> &nbsp;&nbsp; 6 = 7<sup>c</sup> &nbsp;&nbsp; 7 = 8<sup>d</sup>',
+ eq:'4 = 5<sup>a</sup> &nbsp;&nbsp; 5 = 6<sup>b</sup> &nbsp;&nbsp; 6 = 7<sup>c</sup> &nbsp;&nbsp; 7 = 8<sup>d</sup>',
  text:'Find the value of <strong>a &middot; b &middot; c &middot; d</strong>.',
  options:['2/3','4/3','1/3','1/5'],answer:0},
 
 {id:24,sec:3,mcq:false,
- math:'X<sup>A(B&minus;C)</sup> &middot; X<sup>B(C&minus;A)</sup> &middot; X<sup>C(A&minus;B)</sup> &middot; X<sup>(A&minus;B)(A+B)</sup> &middot; X<sup>(B&minus;C)(B+C)</sup> &middot; X<sup>(C&minus;A)(C+A)</sup>',
- text:'Simplify the above expression.',
+ eq:'<div style="display:inline-block;text-align:center;vertical-align:middle"><div style="border-bottom:2px solid var(--navy);padding:2px 12px">X<sup>A(B&minus;C)</sup> &middot; X<sup>B(C&minus;A)</sup> &middot; X<sup>C(A&minus;B)</sup></div><div style="padding:2px 12px">(X<sup>A&minus;B</sup>)<sup>A+B</sup> &middot; (X<sup>B&minus;C</sup>)<sup>B+C</sup> &middot; (X<sup>C&minus;A</sup>)<sup>C+A</sup></div></div>',
+ text:'Simplify the expression.',
  answer:'1',tol:0},
 
 {id:25,sec:3,mcq:false,
- math:'2<sup>x+1</sup> + 2<sup>x&minus;1</sup> = 320',
+ eq:'2<sup>x+1</sup> + 2<sup>x&minus;1</sup> = 320',
  text:'Find the value of <strong>x</strong>.',
  answer:'7',tol:0},
 
 {id:26,sec:3,mcq:true,
- math:'(a&sup2;/b&sup2;)<sup>3x+4</sup> = (b&sup3;/a&sup3;)<sup>x&minus;5</sup>',
+ eq:'(a<sup>2</sup>b<sup>2</sup>)<sup>3x+4</sup> = (b<sup>3</sup>a<sup>3</sup>)<sup>x&minus;5</sup>',
  text:'Find the value of <strong>x</strong>.',
  options:['1/3','5/9','7/9','None of these'],answer:2},
 ];
@@ -402,7 +410,7 @@ let student={name:'',center:'',batch:''};
 const state={};
 for(let i=1;i<=TOTAL;i++)state[i]={status:'nv',response:null};
 state[1].status='na';
-const secLabel=['','Surds & Roots','Indices & Powers','Exponential Equations'];
+const secLabel=['','Exponents & Surds','Power Laws & Comparison','Equal Powers & Index Laws'];
 const bClass=['','b-s1','b-s2','b-s3'];
 
 function startTest(){
@@ -434,10 +442,10 @@ function renderQ(qid){
   const q=Q[qid-1],st=state[qid];
   const typeBadge=q.mcq?`<span class="badge b-mcq">MCQ &middot; &minus;1</span>`:`<span class="badge b-tita">TITA</span>`;
   let html=`<div class="q-meta"><span class="q-num">Q.${q.id}</span><span class="badge ${bClass[q.sec]}">${secLabel[q.sec]}</span>${typeBadge}</div>`;
-  if(q.math){html+=`<div class="math">${q.math}</div>`;}
+  if(q.eq){html+=`<div class="eq-box">${q.eq}</div>`;}
   const instrTxt=q.mcq
     ?'&#128309; Select the correct option. <strong style="color:#b91c1c">&minus;1 for wrong answer.</strong>'
-    :'&#128204; Type In The Answer &mdash; digits and decimal point only. No negative marking.';
+    :'&#128204; Type In The Answer. Digits and decimal point only. No negative marking.';
   html+=`<div class="instr">${instrTxt}</div>`;
   html+=`<div class="q-text">${q.text}</div>`;
   if(q.mcq){
@@ -512,7 +520,7 @@ function showResults(){
   const acc=correct+wrong>0?Math.round(correct/(correct+wrong)*100):0;
   document.getElementById('s-strip').innerHTML=`<span>&#128100; <strong>${student.name||'&mdash;'}</strong></span><span>Center: <strong>${student.center||'&mdash;'}</strong></span><span>Batch: <strong>${student.batch||'&mdash;'}</strong></span><span>Time: <strong>${timeTaken()}</strong></span>`;
   document.getElementById('score-cards').innerHTML=`<div class="sc"><div class="sc-label">Net Score</div><div class="sc-val blue">${total}</div><div style="font-size:10px;color:#888;margin-top:4px">out of 78</div></div><div class="sc"><div class="sc-label">Accuracy</div><div class="sc-val gld">${acc}%</div><div style="font-size:10px;color:#888;margin-top:4px">${correct} of ${correct+wrong}</div></div><div class="sc"><div class="sc-label">Correct</div><div class="sc-val grn">+${correct*3}</div><div style="font-size:10px;color:#888;margin-top:4px">${correct} questions</div></div><div class="sc"><div class="sc-label">Wrong</div><div class="sc-val" style="color:${wrong>0?'var(--red)':'var(--gray)'}">${wrong>0?'-'+wrong:0}</div><div style="font-size:10px;color:#888;margin-top:4px">MCQ only</div></div>`;
-  const sNames=['&#167;1 Surds &amp; Roots','&#167;2 Indices &amp; Powers','&#167;3 Exponential Equations'];
+  const sNames=['&#167;1 Exponents &amp; Surds','&#167;2 Power Laws &amp; Comparison','&#167;3 Equal Powers &amp; Index Laws'];
   const sMax=[27,24,27];
   document.getElementById('atbl').innerHTML=`<tr><th>Section</th><th>Qs</th><th>Attempted</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Score</th><th>Max</th></tr>`+secD.map((sd,i)=>`<tr><td><strong>${sNames[i]}</strong></td><td>${sd.q}</td><td>${sd.c+sd.w}</td><td>${sd.c}</td><td>${sd.w}</td><td>${sd.s}</td><td style="font-weight:700;color:${sd.m>0?'#16a34a':sd.m<0?'#b91c1c':'#555'}">${sd.m}</td><td style="color:#888">${sMax[i]}</td></tr>`).join('')+`<tr style="background:#e0eaff"><td><strong>TOTAL</strong></td><td><strong>26</strong></td><td><strong>${correct+wrong}</strong></td><td><strong>${correct}</strong></td><td><strong>${wrong}</strong></td><td><strong>${skip}</strong></td><td style="font-weight:700;font-size:15px;color:${total>=0?'var(--navy)':'var(--red)'}">${total}</td><td style="font-weight:700;color:#888">78</td></tr>`;
   submitToGF({total,correct,wrong,skip});renderReview('all');document.getElementById('results-ov').classList.add('show');
@@ -526,14 +534,15 @@ function renderReview(filter){
     let ansHtml='';
     if(q.mcq){
       const yi=has?parseInt(resp):-1,ci=q.answer;
-      if(yi===-1)ansHtml=`<div class="rq-ans"><span class="rq-your">Your: <strong>&mdash;</strong></span>&nbsp;&nbsp;<span class="rq-correct">&#10003; ${L[ci]}. ${q.options[ci].replace(/<[^>]+>/g,'')}</span></div>`;
-      else if(yi===ci)ansHtml=`<div class="rq-ans"><span class="rq-correct">&#10003; ${L[ci]}. ${q.options[ci].replace(/<[^>]+>/g,'')}</span></div>`;
-      else ansHtml=`<div class="rq-ans"><span class="rq-your">Your: <strong>${L[yi]}</strong></span>&nbsp;&nbsp;<span class="rq-correct">&#10003; ${L[ci]}. ${q.options[ci].replace(/<[^>]+>/g,'')}</span></div>`;
+      const dispOpt=(i)=>q.options[i].replace(/<[^>]+>/g,'').substring(0,40);
+      if(yi===-1)ansHtml=`<div class="rq-ans"><span class="rq-your">Your: <strong>&mdash;</strong></span>&nbsp;&nbsp;<span class="rq-correct">&#10003; ${L[ci]}. ${dispOpt(ci)}</span></div>`;
+      else if(yi===ci)ansHtml=`<div class="rq-ans"><span class="rq-correct">&#10003; ${L[ci]}. ${dispOpt(ci)}</span></div>`;
+      else ansHtml=`<div class="rq-ans"><span class="rq-your">Your: <strong>${L[yi]}. ${dispOpt(yi)}</strong></span>&nbsp;&nbsp;<span class="rq-correct">&#10003; ${L[ci]}. ${dispOpt(ci)}</span></div>`;
     } else {
       ansHtml=`<div class="rq-ans"><span class="rq-your">Your: <strong>${has?resp:'&mdash;'}</strong></span>&nbsp;&nbsp;<span class="rq-correct">&#10003; Correct: <strong>${q.answer}</strong></span></div>`;
     }
-    const qShort=(q.math?q.math.replace(/<[^>]+>/g,'').substring(0,50)+' | ':'')+q.text.replace(/<[^>]+>/g,'').substring(0,60);
-    html+=`<div class="rq"><div class="rq-hdr"><span class="rq-num">Q.${q.id}</span><span class="badge ${bClass[q.sec]}" style="font-size:10px">${secLabel[q.sec]}</span><span class="badge ${q.mcq?'b-mcq':'b-tita'}" style="font-size:10px">${q.mcq?'MCQ':'TITA'}</span>${stHtml}</div><div style="font-size:12px;color:#666;margin-bottom:3px">${qShort}&hellip;</div>${ansHtml}</div>`;
+    const qShort=(q.eq||q.text).replace(/<[^>]+>/g,'').substring(0,80);
+    html+=`<div class="rq"><div class="rq-hdr"><span class="rq-num">Q.${q.id}</span><span class="badge ${bClass[q.sec]}" style="font-size:10px">${secLabel[q.sec]}</span><span class="badge ${q.mcq?'b-mcq':'b-tita'}" style="font-size:10px">${q.mcq?'MCQ':'TITA'}</span>${stHtml}</div><div style="font-size:12.5px;color:var(--text);margin-bottom:3px">${qShort}&hellip;</div>${ansHtml}</div>`;
   });
   if(!html)html='<div style="padding:20px;text-align:center;color:#999">No questions in this category.</div>';
   document.getElementById('review-list').innerHTML=html;
@@ -548,18 +557,18 @@ async function submitToGF(scores){
   catch(e){showToast('Could not reach Google Forms',true);}
 }
 function downloadPDF(){
-  const sNames=['Surds & Roots','Indices & Powers','Exponential Equations'];
+  const sNames=['Exponents & Surds','Power Laws & Comparison','Equal Powers & Index Laws'];
   let curSec=0,body='';
   Q.forEach(q=>{
     if(q.sec!==curSec){curSec=q.sec;body+=`<div class="sh">${sNames[q.sec-1]}</div>`;}
-    const mathStr=q.math?`<div class="mth">${q.math.replace(/<[^>]+>/g,'')}</div>`:'';
+    const eqStr=q.eq?`<div class="eq">${q.eq.replace(/<[^>]+>/g,'')}</div>`:'';
     const dispAns=q.mcq?`${L[q.answer]}. ${q.options[q.answer].replace(/<[^>]+>/g,'')}`:q.answer;
-    body+=`<div class="qb"><div class="qr"><span class="qn">Q.${q.id} <span class="qt-b">${q.mcq?'MCQ':'TITA'}</span></span><span class="qt">${mathStr}${q.text.replace(/<[^>]+>/g,'').substring(0,120)}</span></div>`;
-    if(q.mcq)body+=`<div class="opts">${q.options.map((o,i)=>`<span class="${i===q.answer?'oc':''}">${L[i]}. ${o.replace(/<[^>]+>/g,'')}</span>`).join('  ')}</div>`;
-    body+=`<div class="ans">Answer: ${dispAns}</div></div>`;
+    body+=`<div class="qb">${eqStr}<div class="qr"><span class="qn">Q.${q.id} <span class="qt-b">${q.mcq?'MCQ':'TITA'}</span></span><span class="qt">${q.text.replace(/<[^>]+>/g,'').substring(0,130)}</span></div>`;
+    if(q.mcq)body+=`<div class="opts">${q.options.map((o,i)=>`<span class="${i===q.answer?'oc':''}">${L[i]}. ${o.replace(/<[^>]+>/g,'')}</span>`).join(' &nbsp;')}</div>`;
+    body+=`<div class="ans">&#10003; Answer: ${dispAns}</div></div>`;
   });
   const win=window.open('','_blank');
-  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Math Reboot 17 Key</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5px;color:#000;padding:18px 22px}h1{font-size:14px;font-weight:700;color:#0f2556;margin-bottom:3px}.meta{font-size:9.5px;color:#555;margin-bottom:4px}.note{font-size:9.5px;color:#888;border-bottom:1px solid #eee;padding-bottom:7px;margin-bottom:12px}.sh{font-size:12px;font-weight:700;color:#0f2556;margin:12px 0 5px;border-bottom:2px solid #0f2556;padding-bottom:2px}.qb{margin-bottom:5px;padding:5px 8px;border:1px solid #ddd;border-radius:4px;page-break-inside:avoid}.qr{display:flex;gap:5px;align-items:flex-start;margin-bottom:2px}.qn{font-weight:700;color:#2851a3;min-width:55px;font-size:10px;flex-shrink:0}.qt-b{background:#e0eaff;padding:1px 3px;border-radius:3px;font-size:8px;font-weight:600}.qt{font-size:10px;color:#111;line-height:1.45}.mth{color:#0f2556;font-weight:600;font-size:9.5px;margin-bottom:2px}.opts{font-size:9.5px;color:#333;margin:2px 0}.oc{font-weight:700;color:#1a7a3c}.ans{font-size:11px;font-weight:700;color:#1a7a3c;margin-top:2px}</style></head><body><h1>QA - Math Reboot 17 - Indices, Surds and Exponents - Answer Key</h1><div class="meta">Student: <strong>${student.name||'---'}</strong> | Center: <strong>${student.center||'---'}</strong> | Batch: <strong>${student.batch||'---'}</strong> | Date: ${new Date().toLocaleDateString('en-IN')}</div><div class="note">26 Questions - 12 MCQ (+3/-1) - 14 TITA (+3/0) - Note: Q8 uses 2*sqrt(11), not sqrt(211) | Q21 uses (1/2)x+(1/4)y+(1/6)z=247/144</div>${body}</body></html>`);
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Math Reboot 17 Key</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10.5px;color:#000;padding:18px 22px}h1{font-size:14px;font-weight:700;color:#0f2556;margin-bottom:3px}.meta{font-size:9.5px;color:#555;margin-bottom:4px}.note{font-size:9.5px;color:#888;border-bottom:1px solid #eee;padding-bottom:7px;margin-bottom:12px}.sh{font-size:12px;font-weight:700;color:#0f2556;margin:12px 0 5px;border-bottom:2px solid #0f2556;padding-bottom:2px}.qb{margin-bottom:5px;padding:5px 8px;border:1px solid #ddd;border-radius:4px;page-break-inside:avoid}.eq{font-size:9px;color:#336;font-style:italic;margin-bottom:2px}.qr{display:flex;gap:5px;align-items:flex-start;margin-bottom:2px}.qn{font-weight:700;color:#2851a3;min-width:55px;font-size:10px;flex-shrink:0}.qt-b{background:#e0eaff;padding:1px 3px;border-radius:3px;font-size:8px;font-weight:600}.qt{font-size:10px;color:#111;line-height:1.45}.opts{font-size:9px;color:#333;margin:2px 0}.oc{font-weight:700;color:#1a7a3c}.ans{font-size:11px;font-weight:700;color:#1a7a3c;margin-top:2px}</style></head><body><h1>QA - Math Reboot 17 - Exponents, Surds & Power Laws - Answer Key</h1><div class="meta">Student: <strong>${student.name||'---'}</strong> | Center: <strong>${student.center||'---'}</strong> | Batch: <strong>${student.batch||'---'}</strong> | Date: ${new Date().toLocaleDateString('en-IN')}</div><div class="note">26 Questions - 12 MCQ (+3/-1) - 14 TITA (+3/0)</div>${body}</body></html>`);
   win.document.close();win.onload=()=>{win.focus();win.print();};
 }
 function showToast(msg,isErr=false){const t=document.getElementById('toast');t.textContent=msg;t.className='toast'+(isErr?' err':'')+' show';setTimeout(()=>t.classList.remove('show'),4000);}
